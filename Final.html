@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Interface</title>
+    <style>
+      body {
+        background-color: #ffffff;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        background: #0F0F0F;
+        gap: 20px;
+        padding: 20px;
+        border: 1px solid #333;
+        border-radius: 5px;
+        height: 46;
+        width: 50%;
+      }
+      .container input {
+        display: inline-block;
+        padding: 8px;
+        margin: 5px 5px 10px 0;
+        border: 1px solid #444;
+        border-radius: 4px;
+        background-color: #0F0F0F;
+        color: #fff;
+      }
+      .container .toggle-group {
+        display: flex;
+        /* justify-content: space-between; */
+        margin: 10px 0;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .toggle-group > div {
+        background: #1A1A1A;
+        width: 40%;
+        height: 40px;
+        padding: 8px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .toggle-group label
+      {
+        display: flex;
+        gap: 8px;
+      }
+      .audit-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        
+      }
+      .audit-label {
+        margin-right: 20px;
+        display: flex;
+        gap: 8px;
+        font-size: 16px;
+      }
+
+      .toggle-switch {
+        position: relative;
+        display: flex;
+        width: 30px;
+        height: 10px;
+        margin-left: auto;
+        
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        inset: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 34px;
+        
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        top: -2px;
+        left: -2px;
+        transform: -50% -50% ;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background: #28DEAF;
+
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        transform: translateX(20px);
+      }
+      .dropdown-group{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .dropdown-group > select
+      {
+        margin-left: auto;
+      }
+      .audit-item:last-of-type .dropdown-group
+      {
+        width: 100%;        
+      }
+      .audit-item:last-of-type .dropdown-group select
+      {
+        padding: 4px;
+        border-radius: 6px;
+        background: #333333;
+        border: 1px solid #3C3C3C;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <label for="pooled-sol"
+          ><strong>Pooled SOL <span>&#9432;</span></strong></label
+        >
+        <br />
+        <br />
+        <input
+          type="number"
+          id="pooled-sol"
+          name="pooled-sol"
+          placeholder="Min"
+        />
+        <input
+          type="number"
+          id="pooled-sol-max"
+          name="pooled-sol-max"
+          placeholder="Max"
+        />
+      </div>
+      <div>
+        <label for="pooled-token"
+          ><strong>Pooled Token <span>&#9432;</span></strong></label
+        >
+        <br />
+        <br />
+        <input
+          type="number"
+          id="pooled-token"
+          name="pooled-token"
+          placeholder="Min %"
+        />
+        <input
+          type="number"
+          id="pooled-token-max"
+          name="pooled-token-max"
+          placeholder="Max %"
+        />
+      </div>
+
+      <div class="Premium Audits">
+        <label for="Premium Audits"
+          ><strong>Premium Audits <span>&#9432;</span></strong></label
+        >
+        <div class="toggle-group">
+          <div class="audit-item">
+            <div class="audit-label">
+              <strong><span>&#9432;</span></strong
+              >Can Freeze Audit
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="audit-item">
+            <div class="audit-label">
+              <strong><span>&#9432;</span></strong
+              >Top 10 Holders Audit
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" />
+              <span class="slider"></span>
+            </label>
+            <i class="lock-icon fas fa-lock"></i>
+            <span class="locked"><img src="https://cdn-icons-png.flaticon.com/128/747/747474.png" data-src="https://cdn-icons-png.flaticon.com/128/747/747474.png" alt="Padlock" title="Padlock" width="16" height="16" class="lzy lazyload--done" srcset="https://cdn-icons-png.flaticon.com/128/747/747474.png 4x"></span>
+          </div>
+          <div class="audit-item">
+            <div class="audit-label">
+              <strong><span>&#9432;</span></strong
+              >Can Mint Audit
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" />
+              <span class="slider"></span>
+            </label>
+        </div>
+        <div class="audit-item">
+            <div class="dropdown-group">
+              <label for="watch-for">
+                <strong><span>&#9432;</span></strong
+                >Watch For</label
+              >
+              <select id="watch-for" name="watch-for">
+                <option value="1">1 Min</option>
+                <option value="5">5 Min</option>
+                <option value="15">15 Min</option>
+                <option value="30">30 Min</option>
+                <option value="60">1 H<span class="locked">🔒</span></option>
+                <option value="180">3 H<span class="locked">🔒</span></option>
+                <option value="720">12 H<span class="locked">🔒</span></option>
+                <option value="1440">24 H<span class="locked">🔒</span></option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
